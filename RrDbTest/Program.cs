@@ -79,7 +79,7 @@ namespace RrDbTest
          //rrdDef.addArchive(new ConsolFun(ConsolFun.ConsolFunTypes.AVERAGE), 0.5, 6, 10);
          //Console.WriteLine(rrdDef.dump());
          DateTime startDateTime = rrd4n.Common.Util.getDate(920804400);
-         RrdDbParser parser = new RrdDbParser("net_test.rrd --start \"" + startDateTime.ToString() + "\" DS:speed:COUNTER:600:U:U RRA:AVERAGE:0,5:1:24 RRA:AVERAGE:0,5:6:10");
+         RrdDbParser parser = new RrdDbParser("create net_test.rrd --start \"" + startDateTime.ToString() + "\" DS:speed:COUNTER:600:U:U RRA:AVERAGE:0.5:1:24 RRA:AVERAGE:0.5:6:10");
          rrdDef = parser.CreateDatabaseDef();
          Console.WriteLine(rrdDef.dump());
          Console.WriteLine("Estimated file size: " + rrdDef.getEstimatedSize());
