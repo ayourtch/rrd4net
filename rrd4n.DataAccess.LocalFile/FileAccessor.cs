@@ -20,7 +20,11 @@ namespace rrd4n.DataAccess.LocalFile
 			try
 			{
 				string dataPath;
-				if (DataPath.Contains("${APPDATA}"))
+				if (DataPath == null)
+				{
+					dataPath = "";
+				}
+				else if (DataPath.Contains("${APPDATA}"))
 				{
 					dataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 					dataPath += DataPath.Substring(10);
