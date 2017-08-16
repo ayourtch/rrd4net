@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A714863C-5482-42F3-9738-D066A23E8837}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>rrd4n.DataAccess.ServerFile</RootNamespace>
+    <AssemblyName>rrd4n.DataAccess.ServerFile</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ServerAccessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\rrd4n.Common\rrd4n.Common.csproj">
+      <Project>{31198A63-1FEC-4494-B95A-DC544C6DA6B8}</Project>
+      <Name>rrd4n.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.Data\rrd4n.DataAccess.Data.csproj">
+      <Project>{A62AE0AB-C96F-45DE-B4DB-7222AC2CF681}</Project>
+      <Name>rrd4n.DataAccess.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.Interface\rrd4n.DataAccess.Interface.csproj">
+      <Project>{021464DE-4FEC-417E-9D09-EEDEA788BD0D}</Project>
+      <Name>rrd4n.DataAccess.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.ServerAccess.Data\rrd4n.ServerAccess.Data.csproj">
+      <Project>{F52EE08E-CF5B-4E91-A15C-B08ED8AB3ACB}</Project>
+      <Name>rrd4n.ServerAccess.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.ServerAccess.Interface\rrd4n.ServerAccess.Interface.csproj">
+      <Project>{2F411359-7D07-4DD9-97B3-5F676F3943DD}</Project>
+      <Name>rrd4n.ServerAccess.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

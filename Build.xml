@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project DefaultTargets="Compile" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="C:\Program Files\MSBuild\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+  <!-- Invoke with: C:\Development\CS_Project\TimeTracker>C:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe /p:Configuration=Release  build.xml 
+  -->
+  <PropertyGroup>
+    <ProductName>rrd4n</ProductName>
+    <CompanyName>Nilssons E Service</CompanyName>
+    <Copyright>Copyright (c) Nilssons E Service 2009</Copyright>
+    <Trademark>All Rights Reserved</Trademark>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <DefaultExclude Include=".\**\.svn\**" />
+    <DefaultExclude Include=".\**\bin\**" />
+    <DefaultExclude Include=".\**\obj\**" />
+    <DefaultExclude Include=".\**\Release\**" />
+    <DefaultExclude Include=".\**\Debug\**" />
+    <!-- DefaultExclude Include=".\**\Test\**" /  -->
+    <DefaultExclude Include=".\**\TestResults\**" />
+    <DefaultExclude Include=".\**\doc\**" />
+    <DefaultExclude Include=".\**\www\**" />
+    <DefaultExclude Include=".\**\*.user" />
+    <DefaultExclude Include=".\**\*.suo" />
+    <DefaultExclude Include=".\**\*.zip" />
+    <DefaultExclude Include=".\**\*.txt" />
+    <DefaultExclude Include=".\**\StyleCop.Cache" />
+    <DefaultExclude Include=".\**\Build\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <BuildFiles Include=".\**\*.*" Exclude="@(DefaultExclude)" />
+  </ItemGroup>
+  <Target Name="CopyFiles">
+    <Copy SourceFiles="@(BuildFiles)" DestinationFiles="@(BuildFiles->'..\Build\rrd4n\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+
+  <Target Name="version" DependsOnTargets="CopyFiles">
+    <Version Major="1" Minor="0" VersionFile="version.txt" RevisionType="Increment">
+      <Output TaskParameter="Major" PropertyName="Major" />
+      <Output TaskParameter="Minor" PropertyName="Minor" />
+      <Output TaskParameter="Revision" PropertyName="Revision" />
+    </Version>
+
+    <SvnVersion LocalPath="." ToolPath="C:\Program Files\SlikSvn\bin">
+      <!--<Output TaskParameter="Revision" PropertyName="Revision" />-->
+      <Output TaskParameter="Revision" PropertyName="Build" />
+    </SvnVersion>
+    <Message Text="Version: $(Major).$(Minor).$(Build).$(Revision)"/>
+    <CreateItem Include="Major" AdditionalMetadata="ReplacementValue=$(Major)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="Minor" AdditionalMetadata="ReplacementValue=$(Minor)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="Build" AdditionalMetadata="ReplacementValue=$(Build)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="Revision" AdditionalMetadata="ReplacementValue=$(Revision)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="Configuration" AdditionalMetadata="ReplacementValue=$(Configuration)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="ProductName" AdditionalMetadata="ReplacementValue=$(ProductName)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="CompanyName" AdditionalMetadata="ReplacementValue=$(CompanyName)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="Copyright" AdditionalMetadata="ReplacementValue=$(Copyright)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="Trademark" AdditionalMetadata="ReplacementValue=$(Trademark)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+    <CreateItem Include="ProductId" AdditionalMetadata="ReplacementValue=$(ProductId)">
+      <Output TaskParameter="Include" ItemName="AssemblyInfoTokens"/>
+    </CreateItem>
+
+  <!--OutputFile=".\Build\TimeTracker\Properties\AssemblyInfo.cs"-->
+  <AssemblyInfo  
+    CodeLanguage="CS"  
+    OutputFile="..\Build\rrd4n\GlobalAssemblyInfo.cs"  
+    AssemblyCompany="$(CompanyName)"  
+    AssemblyProduct="$(ProductName)"  
+    AssemblyCopyright="$(Copyright)"  
+    AssemblyTrademark="$(Trademark)"  
+    CLSCompliant="true"  
+    AssemblyDelaySign="false"  
+    AssemblyKeyName=""  
+    AssemblyCulture=""  
+    AssemblyVersion="$(Major).$(Minor).$(Build).$(Revision)" 
+    AssemblyFileVersion="$(Major).$(Minor).$(Build).$(Revision)" />
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="version">
+    <MSBuild Projects="..\Build\rrd4n\rrd4n.sln" Properties="Configuration=Debug" />
+  </Target>
+
+</Project>
+

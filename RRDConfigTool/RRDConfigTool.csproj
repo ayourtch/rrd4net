@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{062DCEFC-9155-4351-97CE-9E7F8BB673B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RRDConfigTool</RootNamespace>
+    <AssemblyName>RRDConfigTool</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.Log4netIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.3.1.24483, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ArchiveController.cs" />
+    <Compile Include="Controllers\CreateDatabaseController.cs" />
+    <Compile Include="Controllers\DataSourceController.cs" />
+    <Compile Include="Controllers\FetchDataController.cs" />
+    <Compile Include="Controllers\GraphController.cs" />
+    <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="Data\ArchiveDisplayData.cs" />
+    <Compile Include="Data\DatabaseData.cs" />
+    <Compile Include="Data\FetchedData.cs" />
+    <Compile Include="Data\Model.cs" />
+    <Compile Include="DockingMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockingMainForm.Designer.cs">
+      <DependentUpon>DockingMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DumpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DumpForm.Designer.cs">
+      <DependentUpon>DumpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDatabaseForm.Designer.cs">
+      <DependentUpon>EditDatabaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FetchDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FetchDataForm.Designer.cs">
+      <DependentUpon>FetchDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateDatabaseForm.Designer.cs">
+      <DependentUpon>CreateDatabaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphForm.Designer.cs">
+      <DependentUpon>GraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphLeftForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphLeftForm.Designer.cs">
+      <DependentUpon>GraphLeftForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewArchiveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewArchiveForm.Designer.cs">
+      <DependentUpon>NewArchiveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewDatasourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewDatasourceForm.Designer.cs">
+      <DependentUpon>NewDatasourceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewRrdDbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewRrdDbForm.Designer.cs">
+      <DependentUpon>NewRrdDbForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockingMainForm.resx">
+      <DependentUpon>DockingMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DumpForm.resx">
+      <DependentUpon>DumpForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDatabaseForm.resx">
+      <DependentUpon>EditDatabaseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FetchDataForm.resx">
+      <DependentUpon>FetchDataForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateDatabaseForm.resx">
+      <DependentUpon>CreateDatabaseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphForm.resx">
+      <DependentUpon>GraphForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphLeftForm.resx">
+      <DependentUpon>GraphLeftForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewArchiveForm.resx">
+      <DependentUpon>NewArchiveForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewDatasourceForm.resx">
+      <DependentUpon>NewDatasourceForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewRrdDbForm.resx">
+      <DependentUpon>NewRrdDbForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RrdDbForm.resx">
+      <DependentUpon>RrdDbForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RrdDbTreeForm.resx">
+      <DependentUpon>RrdDbTreeForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RrdDbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RrdDbForm.Designer.cs">
+      <DependentUpon>RrdDbForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RrdDbTreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RrdDbTreeForm.Designer.cs">
+      <DependentUpon>RrdDbTreeForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\rrd4n.Common\rrd4n.Common.csproj">
+      <Project>{31198A63-1FEC-4494-B95A-DC544C6DA6B8}</Project>
+      <Name>rrd4n.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.Data\rrd4n.DataAccess.Data.csproj">
+      <Project>{A62AE0AB-C96F-45DE-B4DB-7222AC2CF681}</Project>
+      <Name>rrd4n.DataAccess.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.Interface\rrd4n.DataAccess.Interface.csproj">
+      <Project>{021464DE-4FEC-417E-9D09-EEDEA788BD0D}</Project>
+      <Name>rrd4n.DataAccess.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.LocalFile\rrd4n.DataAccess.LocalFile.csproj">
+      <Project>{2A0B5D5D-9B4E-40C9-AD36-293EAA654F68}</Project>
+      <Name>rrd4n.DataAccess.LocalFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.ServerFile\rrd4n.DataAccess.ServerFile.csproj">
+      <Project>{A714863C-5482-42F3-9738-D066A23E8837}</Project>
+      <Name>rrd4n.DataAccess.ServerFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.Graph\rrd4n.Graph.csproj">
+      <Project>{F5AFCCDC-BECB-449A-BFE4-D531E7AEA9A4}</Project>
+      <Name>rrd4n.Graph</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n\rrd4n.csproj">
+      <Project>{78D47C65-9C7B-42E4-BFAB-2B6324D73CC5}</Project>
+      <Name>rrd4n</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Add.bmp" />
+    <Content Include="Images\CreateNew.bmp" />
+    <Content Include="GraphDef.txt" />
+    <Content Include="Images\Remove.bmp" />
+    <Content Include="Images\Save.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

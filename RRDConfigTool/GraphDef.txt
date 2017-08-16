@@ -1,0 +1,21 @@
+﻿Värmepump + hotwater:
+- --start "2009-10-29 00:00:00" --end "2009-11-05 00:00:00" --imgformat PNG DEF:myruntime="hotwater.rra":hotwater:AVERAGE 
+DEF:hruntime="heater_runtime.rra":runtime:AVERAGE
+-w 800 
+LINE2:minutes#FF0000:hotwater 
+LINE2:hminutes#0000FF:heater\l
+CDEF:Wh=myruntime,1.500,*,3600,/  
+SDEF:Wh_Sum=Wh,TOTAL 
+CDEF:WhOut=myruntime,4,*,3600,/  
+SDEF:Who_Sum=WhOut,TOTAL 
+GPRINT:Wh_Sum:"Förbrukad effekt %10.2lf kWh\l"
+GPRINT:Who_Sum:"Levererad effekt %10.2lf kWh\l" 
+CDEF:hours=myruntime,3600,/
+GPRINT:hours:TOTAL:"Total körtid %4.2f h\l" 
+GPRINT:minutes:MAX:"Max körtid\: %1.0f minuter" 
+GPRINT:minutes:MIN:"Min körtid\: %1.0f minuter"
+GPRINT:minutes:AVERAGE:"Avg %4.2f minuter\l" 
+CDEF:minutes=myruntime,3600,*,60,/ 
+CDEF:hminutes=hruntime,3600,*,60,/ 
+--title "Värmepump 09-10-21 - 09-10-22"
+

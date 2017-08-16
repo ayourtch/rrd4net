@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F5AFCCDC-BECB-449A-BFE4-D531E7AEA9A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>rrd4n.Graph</RootNamespace>
+    <AssemblyName>rrd4n.Graph</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Area.cs" />
+    <Compile Include="CDef.cs" />
+    <Compile Include="CommentText.cs" />
+    <Compile Include="Def.cs" />
+    <Compile Include="GraphParser.cs" />
+    <Compile Include="HRule.cs" />
+    <Compile Include="ImageParameters.cs" />
+    <Compile Include="ImageWorker.cs" />
+    <Compile Include="LegendComposer.cs" />
+    <Compile Include="LegendText.cs" />
+    <Compile Include="Line.cs" />
+    <Compile Include="Mapper.cs" />
+    <Compile Include="PDef.cs" />
+    <Compile Include="PlotElement.cs" />
+    <Compile Include="PrintText.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RrdGraph.cs" />
+    <Compile Include="RrdGraphConstants.cs" />
+    <Compile Include="RrdGraphDef.cs" />
+    <Compile Include="RrdGraphInfo.cs" />
+    <Compile Include="Rule.cs" />
+    <Compile Include="Scaled.cs" />
+    <Compile Include="SDef.cs" />
+    <Compile Include="Shift.cs" />
+    <Compile Include="Source.cs" />
+    <Compile Include="SourcedPlotElement.cs" />
+    <Compile Include="Stack.cs" />
+    <Compile Include="TimeAxis.cs" />
+    <Compile Include="TimeAxisSetting.cs" />
+    <Compile Include="ValueAxis.cs" />
+    <Compile Include="ValueAxisLogarithmic.cs" />
+    <Compile Include="ValueAxisMrtg.cs" />
+    <Compile Include="ValueAxisSetting.cs" />
+    <Compile Include="ValueScaler.cs" />
+    <Compile Include="VRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\rrd4n.Common\rrd4n.Common.csproj">
+      <Project>{31198A63-1FEC-4494-B95A-DC544C6DA6B8}</Project>
+      <Name>rrd4n.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.Data\rrd4n.DataAccess.Data.csproj">
+      <Project>{A62AE0AB-C96F-45DE-B4DB-7222AC2CF681}</Project>
+      <Name>rrd4n.DataAccess.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.Interface\rrd4n.DataAccess.Interface.csproj">
+      <Project>{021464DE-4FEC-417E-9D09-EEDEA788BD0D}</Project>
+      <Name>rrd4n.DataAccess.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.LocalFile\rrd4n.DataAccess.LocalFile.csproj">
+      <Project>{2A0B5D5D-9B4E-40C9-AD36-293EAA654F68}</Project>
+      <Name>rrd4n.DataAccess.LocalFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.DataAccess.ServerFile\rrd4n.DataAccess.ServerFile.csproj">
+      <Project>{A714863C-5482-42F3-9738-D066A23E8837}</Project>
+      <Name>rrd4n.DataAccess.ServerFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rrd4n.Data\rrd4n.Data.csproj">
+      <Project>{E9C5A918-7B10-4F6C-8947-AB6CF18E9327}</Project>
+      <Name>rrd4n.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
