@@ -151,6 +151,7 @@ namespace rrd4n.Common.Time
 		private void timeOfDay()
 		{
 			int minute = 0;
+			int second = 0;
 			/* save token status in case we must abort */
 			scanner.saveState();
 			/* first pick out the time of day - we assume a HH (COLON|DOT) MM time */
@@ -175,6 +176,17 @@ namespace rrd4n.Common.Time
 					throw new ArgumentException("Parsing HH:MM syntax, got MM = " + minute + " (>59!)");
 				}
 				token = scanner.nextToken();
+				if (token.id == TimeToken.COLON)
+				{
+					expectToken(TimeToken.NUMBER, "Parsing HH:MM:SS syntax, expecting SS as number, got none");
+					second = int.Parse(token.value);
+					if (second > 59)
+					{
+						throw new ArgumentException("Parsing HH:MM:SS syntax, got SS = " + second + " (>59!)");
+					}
+					token = scanner.nextToken();
+				}
+				
 			}
 			/* check if an AM or PM specifier was given */
 			if (token.id == TimeToken.AM || token.id == TimeToken.PM)
@@ -209,7 +221,7 @@ namespace rrd4n.Common.Time
 			}
 			spec.hour = hour;
 			spec.min = minute;
-			spec.sec = 0;
+			spec.sec = second;
 			if (spec.hour == 24)
 			{
 				spec.hour = 0;
